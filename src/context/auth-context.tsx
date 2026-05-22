@@ -5,12 +5,15 @@ type AuthContextType = {
   phoneNumber: string;
   login: (phone: string) => void;
   logout: () => void;
+  hasSeenOnboarding: boolean;
+  completeOnboarding: () => void;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [hasSeenOnboarding, setHasSeenOnboarding] = useState(false);
 
   const value = useMemo(
     () => ({
@@ -18,8 +21,10 @@ export function AuthProvider({ children }: PropsWithChildren) {
       phoneNumber,
       login: (phone: string) => setPhoneNumber(phone),
       logout: () => setPhoneNumber(''),
+      hasSeenOnboarding,
+      completeOnboarding: () => setHasSeenOnboarding(true),
     }),
-    [phoneNumber]
+    [hasSeenOnboarding, phoneNumber]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
