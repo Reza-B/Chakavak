@@ -1,20 +1,12 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { Module, Controller, Get } from '@nestjs/common';
 
-@Controller('health')
-class HealthController {
-  @Get()
-  health() {
-    return { ok: true, service: 'chakavak-backend' };
-  }
-}
-
-@Module({ controllers: [HealthController] })
-class AppModule {}
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
   await app.listen(3001);
 }
 bootstrap();

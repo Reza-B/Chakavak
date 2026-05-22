@@ -7,11 +7,11 @@
 - [ ] OTP expiration, retry policy, and abuse protection
 
 ## 2) Realtime Audio Rooms
-- [ ] Room CRUD: create/list/detail/close
-- [ ] WebRTC signaling service (join/leave, ICE exchange)
-- [ ] Role management: host/speaker/listener
-- [ ] Raise-hand queue with moderation actions (approve/reject)
-- [ ] Mute/unmute controls + room-wide moderation events
+- [x] Room CRUD: create/list/detail/close
+- [x] Join/leave room API آماده شد (signaling و ICE در گام بعد)
+- [x] Role management: host/speaker/listener
+- [x] Raise-hand queue with moderation actions (approve/reject)
+- [x] Mute/unmute controls + room-wide moderation events
 
 ## 3) Engagement & Social
 - [ ] Sound reactions broadcast channel
