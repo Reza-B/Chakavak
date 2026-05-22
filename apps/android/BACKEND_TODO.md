@@ -14,16 +14,16 @@
 - [x] Mute/unmute controls + room-wide moderation events
 
 ## 3) Engagement & Social
-- [ ] Sound reactions broadcast channel
-- [ ] Backchannel text chat per room
-- [ ] Random pair matching (Speed Chitchat) with timeout + extend flow
+- [x] Sound reactions broadcast channel (REST پایه آماده، websocket گام بعد)
+- [x] Backchannel text chat per room (REST پایه آماده، realtime گام بعد)
+- [x] Random pair matching (Speed Chitchat) with timeout + extend flow (MVP queue/match)
 
 ## 4) Safety & Governance
-- [ ] In-room report API + moderation queue
-- [ ] Device/IP ban system and audit trail
-- [ ] Trust & safety admin dashboard APIs
+- [x] In-room report API + moderation queue
+- [x] Device/IP ban system and audit trail (MVP in-memory)
+- [x] Trust & safety admin dashboard APIs (MVP list/report/ban endpoints)
 
 ## 5) Platform/Infra
-- [ ] Presence service (who is online)
-- [ ] Push notification service (room invites, follows)
-- [ ] Analytics events for retention funnels
+- [x] Presence service (who is online)
+- [x] Push notification service (room invites, follows) - API stub
+- [x] Analytics events for retention funnels - API ingest stub
