@@ -1,0 +1,34 @@
+import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { AuthModule } from './auth/auth.module';
+import { EngagementModule } from './engagement/engagement.module';
+import { PlatformModule } from './platform/platform.module';
+import { RoomsModule } from './rooms/rooms.module';
+import { SafetyModule } from './safety/safety.module';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        type: 'postgres',
+        host: config.get<string>('DB_HOST', 'localhost'),
+        port: config.get<number>('DB_PORT', 5432),
+        username: config.get<string>('DB_USER', 'postgres'),
+        password: config.get<string>('DB_PASSWORD', 'postgres'),
+        database: config.get<string>('DB_NAME', 'chakavak'),
+        autoLoadEntities: true,
+        synchronize: true,
+      }),
+    }),
+    AuthModule,
+    RoomsModule,
+    EngagementModule,
+    SafetyModule,
+    PlatformModule,
+  ],
+})
+export class AppModule {}
